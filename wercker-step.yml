@@ -1,0 +1,21 @@
+name: buildpack-build
+version: 0.0.1
+description: Build buildpack applications.
+keywords:
+  - buildpack
+  - heroku
+  - cloud foundry
+  - cloudfoundry
+properties:
+  platform:
+    type: string
+    required: false
+  stack:
+    type: string
+    required: false
+  buildpacks:
+    type: string
+    required: false
+  debug:
+    type: string
+    required: false
