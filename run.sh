@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 detect_default_buildpacks() {
   buildpacks_path=$1
@@ -39,15 +39,7 @@ detect_default_buildpacks() {
 
   for buildpack in "${default_buildpacks[@]}"; do
     buildpack_path=${buildpacks_path}/${buildpack##*/}
-    if ! [ -d ${buildpack_path} ]; then
-      git clone --depth 1 ${buildpack} ${buildpack_path} 1>&2
-    else
-      pushd ${buildpack_path} &>/dev/null
-      git fetch origin master 1>&2
-      git reset --hard FETCH_HEAD 1>&2
-      git clean -fd 1>&2
-      popd &>/dev/null
-    fi
+    fetch_buildpack ${buildpacks_path} ${buildpack}
     
     if ${buildpack_path}/bin/detect . &>/dev/null; then
       echo ${buildpack}
@@ -56,6 +48,22 @@ detect_default_buildpacks() {
       continue
     fi
   done
+}
+
+fetch_buildpack() {
+  buildpacks_path=$1
+  buildpack_url=$2
+
+  buildpack_path=${buildpacks_path}/${buildpack##*/}
+  if ! [ -d ${buildpack_path} ]; then
+    git clone --depth 1 ${buildpack} ${buildpack_path} 1>&2
+  else
+    pushd ${buildpack_path} &>/dev/null
+    git fetch origin master 1>&2
+    git reset --hard FETCH_HEAD 1>&2
+    git clean -fd 1>&2
+    popd &>/dev/null
+  fi
 }
 
 main() {
@@ -85,6 +93,7 @@ main() {
   rm -f .slugignore
   
   for buildpack in ${buildpacks}; do
+    fetch_buildpack ${buildpacks_path} ${buildpack}
     buildpack_path=${buildpacks_path}/${buildpack##*/}
     
     ${buildpack_path}/bin/detect .
