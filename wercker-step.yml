@@ -1,5 +1,5 @@
 name: buildpack-build
-version: 0.0.2
+version: 0.0.3
 description: Build buildpack applications.
 keywords:
   - buildpack

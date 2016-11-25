@@ -107,9 +107,10 @@ main() {
   for buildpack in ${buildpacks}; do
     fetch_buildpack ${buildpacks_path} ${buildpack}
     buildpack_path=${buildpacks_path}/${buildpack##*/}
+    buildpack_cache_path=${buildpack_path}/buildpack-cache/${buildpack##*/}
     
     ${buildpack_path}/bin/detect .
-    ${buildpack_path}/bin/compile .
+    ${buildpack_path}/bin/compile . ${buildpack_cache_path}
   done  
 }
 
