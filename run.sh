@@ -66,9 +66,21 @@ fetch_buildpack() {
   fi
 }
 
+fix_buildpack_compile() {
+  # Work around timeout set for curl in buildpack compile calls
+  echo '/usr/bin/curl $@ --max-time 300' >/usr/local/bin/curl
+  chmod +x /usr/local/bin/curl
+  
+  # Work around tar permission issue
+  echo '/bin/tar $@ --no-same-owner' >/usr/local/bin/tar
+  chmod +x /usr/local/bin/tar
+}
+
 main() {
   set -e
-  
+
+  fix_buildpack_compile
+
   [ "${WERCKER_BUILDPACK_BUILD_DEBUG}" = "true" ] && set -x
   buildpacks_path=${WERCKER_CACHE_DIR/buildpacks}
   target_platform=${WERCKER_BUILDPACK_BUILD_PLATFORM:-heroku}
