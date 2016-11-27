@@ -10,3 +10,12 @@
 [submodule "test/heroku-ruby-sample"]
 	path = test/heroku-ruby-sample
 	url = https://github.com/heroku/ruby-sample
+[submodule "test/heroku-java-getting-started"]
+	path = test/heroku-java-getting-started
+	url = https://github.com/heroku/java-getting-started
+[submodule "test/heroku-scala-getting-started"]
+	path = test/heroku-scala-getting-started
+	url = https://github.com/heroku/scala-getting-started
+[submodule "test/heroku-go-getting-started"]
+	path = test/heroku-go-getting-started
+	url = https://github.com/heroku/go-getting-started
