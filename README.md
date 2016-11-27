@@ -22,6 +22,14 @@ The MIT License
 
 ## Changelog
 
+### 0.0.3
+
+* Add test apps to step build. We now dry-run builds for several Heroku sample apps
+
+### 0.0.2
+
+* Work around curl timeout and tar permission error in build.
+
 ### 0.0.1
 
 * Initial Release
