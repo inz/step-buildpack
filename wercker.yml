@@ -1,12 +1,16 @@
-box: wercker/default
+box: heroku/cedar:14
 
 build:
   steps:
     # - shellcheck:
     #     files: run.sh
     
-    - validate-wercker-step
+    # - validate-wercker-step
+    
+    - script:
+        name: Run tests
+        code: bash $WERCKER_ROOT/test.sh
 
     - script:
         name: Prepare Output
-        code: rm -rf $WERCKER_ROOT/.git
+        code: rm -rf $WERCKER_ROOT/.git $WERCKER_ROOT/test*
