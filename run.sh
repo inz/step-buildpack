@@ -74,6 +74,9 @@ fix_buildpack_compile() {
   # Work around tar permission issue
   echo '/bin/tar $@ --no-same-owner' >/usr/local/bin/tar
   chmod +x /usr/local/bin/tar
+  
+  # Silence bundler root warning
+  export BUNDLE_SILENCE_ROOT_WARNING=true
 }
 
 main() {
