@@ -7,9 +7,6 @@
 [submodule "test/heroku-python-sample"]
 	path = test/heroku-python-sample
 	url = https://github.com/heroku/python-sample
-[submodule "test/heroku-java-sample"]
-	path = test/heroku-java-sample
-	url = https://github.com/heroku/java-sample
 [submodule "test/heroku-ruby-sample"]
 	path = test/heroku-ruby-sample
 	url = https://github.com/heroku/ruby-sample
