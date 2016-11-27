@@ -2,6 +2,8 @@
 
 This step will mimic the Heroku/Cloud Foundry buildpack compilation process.
 
+To mostly replicate the Heroku build process, use `heroku/cedar:14` as base box for your build.
+
 ## Options
 
 * `platform`: (optional, default: `heroku`) The target build platform. Supported values: `heroku`, `cloudfoundry`
