@@ -1,6 +1,9 @@
-box: heroku/cedar:14
+box: wercker/default
 
 build:
+  box:
+    id: heroku/cedar
+    tag: 14
   steps:
     # - shellcheck:
     #     files: run.sh
