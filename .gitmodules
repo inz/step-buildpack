@@ -4,9 +4,6 @@
 [submodule "test/heroku-node-js-sample"]
 	path = test/heroku-node-js-sample
 	url = https://github.com/heroku/node-js-sample
-[submodule "test/heroku-python-sample"]
-	path = test/heroku-python-sample
-	url = https://github.com/heroku/python-sample
 [submodule "test/heroku-ruby-sample"]
 	path = test/heroku-ruby-sample
 	url = https://github.com/heroku/ruby-sample
