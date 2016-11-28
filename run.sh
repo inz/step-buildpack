@@ -67,13 +67,16 @@ fetch_buildpack() {
 }
 
 fix_buildpack_compile() {
+  mkdir -p bin
+  export PATH=$PWD/bin:$PATH
+  
   # Work around timeout set for curl in buildpack compile calls
-  echo '/usr/bin/curl $@ --max-time 300' >/usr/local/bin/curl
-  chmod +x /usr/local/bin/curl
+  echo '/usr/bin/curl $@ --max-time 300' >bin/curl
+  chmod +x bin/curl
   
   # Work around tar permission issue
-  echo '/bin/tar $@ --no-same-owner' >/usr/local/bin/tar
-  chmod +x /usr/local/bin/tar
+  echo '/bin/tar $@ --no-same-owner' >bin/tar
+  chmod +x bin/tar
   
   # Silence bundler root warning
   export BUNDLE_SILENCE_ROOT_WARNING=true
